@@ -1,66 +1,80 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"> <!-- Define que o idioma da página é português do Brasil -->
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfil Interativo</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-<body class="bg-light">
+    <!-- Metadados da página -->
+    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres utilizado na página (UTF-8) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Garante que a página seja responsiva em dispositivos móveis -->
+    <title>Perfil Interativo</title> <!-- Título da página, exibido na aba do navegador -->
     
+    <!-- Link para o CSS do Bootstrap (framework para estilos rápidos e responsivos) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light"> <!-- Aplica a classe 'bg-light' do Bootstrap para dar um fundo claro à página -->
+    
+    <!-- Container que contém o cartão de perfil -->
     <div class="container mt-5">
-        <div class="card" id="profileCard">
-            <div class="card-body text-center">
+        <div class="card" id="profileCard"> <!-- Cartão de perfil, com id para manipulação via JavaScript -->
+            <div class="card-body text-center"> <!-- Corpo do cartão, centralizado -->
+                
+                <!-- Imagem de perfil, com bordas arredondadas, e uma largura definida de 150px -->
                 <img src="https://via.placeholder.com/150" alt="Imagem de Perfil" id="ProfileImage" class="rounded-circle mb-3" style="width: 150px;">
+                
+                <!-- Nome do perfil -->
                 <h3 id="profileName">Nome: Meu Perfil</h3>
+                
+                <!-- Idade do usuário -->
                 <p id="profileAge">Idade: 18</p>
 
+                <!-- Título de hobbies -->
                 <h5>Hobbies:</h5>
+
+                <!-- Lista de hobbies, com itens predefinidos -->
                 <ul id="hobbiesList" class="list-group mb-3">
-                    <li class="list-group-item">Leituras</li>
-                    <li class="list-group-item">Esportes</li>
-                    <li class="list-group-item">Música</li>
+                    <li class="list-group-item">Leituras</li> <!-- Hobby de leitura -->
+                    <li class="list-group-item">Esportes</li> <!-- Hobby de esportes -->
+                    <li class="list-group-item">Música</li> <!-- Hobby de música -->
                 </ul>
 
-                <button class="btn btn-primary me-2" onclick="alterarNome()">Alterar Nome</button>
-                <button class="btn btn-success me-2" onclick="adicionarHobby()">Adicionar hobby</button>
-                <button class="btn btn-warning me-2" onclick="mudarCorDeFundo()">Mudar cor de fundo</button>
-
+                <!-- Botões que permitem interação com o perfil -->
+                <button class="btn btn-primary me-2" onclick="alterarNome()">Alterar Nome</button> <!-- Botão para alterar o nome -->
+                <button class="btn btn-success me-2" onclick="adicionarHobby()">Adicionar hobby</button> <!-- Botão para adicionar um novo hobby -->
+                <button class="btn btn-warning me-2" onclick="mudarCorDeFundo()">Mudar cor de fundo</button> <!-- Botão para mudar a cor de fundo do cartão de perfil -->
             </div>
         </div>
     </div>
 
+    <!-- Bloco de scripts JavaScript -->
     <script>
+        // Função para alterar o nome do perfil
         function alterarNome() {
-            const novoNome=prompt("Digite o novo nome:");
-            if(novoNome){
-                document.getElementById("profileName").textContent="Nome:"+novoNome;
-            } 
+            const novoNome = prompt("Digite o novo nome:"); // Solicita ao usuário um novo nome
+            if (novoNome) { // Se o nome for informado
+                document.getElementById("profileName").textContent = "Nome: " + novoNome; // Atualiza o nome na página
+            }
         }
 
+        // Função para adicionar um novo hobby à lista
         function adicionarHobby() {
-            const novoHobby=prompt("Digite um novo hobby:");
-            if(novoHobby){
-                const li=document.createElement("li");
-                li.textContent=novoHobby;
-                li.className= "list-group-item"
-                document.getElementById("hobbiesList").appendChild(li);
-            } 
+            const novoHobby = prompt("Digite um novo hobby:"); // Solicita ao usuário um novo hobby
+            if (novoHobby) { // Se o hobby for informado
+                const li = document.createElement("li"); // Cria um novo item de lista
+                li.textContent = novoHobby; // Define o texto do novo hobby
+                li.className = "list-group-item"; // Aplica a classe de item de lista do Bootstrap
+                document.getElementById("hobbiesList").appendChild(li); // Adiciona o item à lista de hobbies
+            }
         }
 
-        function mudarCorDeFundo(){
-            const cores=["#f8d7da", "#d1ecf1", "#d4edda", "#fff3cd", "#cce5ff"];
-            const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
-            document.getElementById("profileCard").style.backgroundColor = corAleatoria;
+        // Função para mudar a cor de fundo do cartão de perfil
+        function mudarCorDeFundo() {
+            // Lista de cores predefinidas
+            const cores = ["#f8d7da", "#d1ecf1", "#d4edda", "#fff3cd", "#cce5ff"];
+            const corAleatoria = cores[Math.floor(Math.random() * cores.length)]; // Seleciona uma cor aleatória da lista
+            document.getElementById("profileCard").style.backgroundColor = corAleatoria; // Aplica a cor ao fundo do cartão de perfil
         }
-
     </script>
+
+    <!-- Inclusão do arquivo JavaScript do Bootstrap (necessário para o funcionamento de alguns componentes, como modais e dropdowns) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
 </body>
-
-
-
-
 </html>
